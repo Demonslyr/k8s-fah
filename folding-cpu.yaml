@@ -41,6 +41,7 @@ spec:
       containers:
         - name: fah-cpu
           image: "atriarchsystems/k8s-fah-richstokes:latest"
+          imagePullPolicy: Always
           # --run-as UID should match runAsUser value in containers securityContext
           command:
             - "/usr/bin/FAHClient"
