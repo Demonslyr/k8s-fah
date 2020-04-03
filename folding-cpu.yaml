@@ -50,6 +50,8 @@ spec:
             - "--run-as"
             - "1234"
             - "--pid-file=/var/lib/fahclient/fahclient.pid"
+          imagePullSecrets:
+          - name: as-regcred
           resources:
             limits:
               cpu: 1000m # How much CPU you wish to donate per node
@@ -79,6 +81,8 @@ spec:
         - name: copy-config
           imagePullPolicy: Always
           image: "atriarchsystems/k8s-fah-richstokes:latest"
+          imagePullSecrets:
+          - name: as-regcred
           command:
             - "sh"
             - "-c"
