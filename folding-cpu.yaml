@@ -17,7 +17,7 @@ spec:
   selector:
     matchLabels:
       app: fah-cpu
-  replicas: 2 # Set number of replicas to run - one replica per node
+  replicas: 3 # Set number of replicas to run - one replica per node
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -55,8 +55,8 @@ spec:
             - "--pid-file=/var/lib/fahclient/fahclient.pid"
           resources:
             limits:
-              cpu: 1000m # How much CPU you wish to donate per node
-              memory: 256Mi
+              cpu: 2000m # How much CPU you wish to donate per node
+              memory: 512Mi
             requests:
               cpu: 100m
               memory: 256Mi
