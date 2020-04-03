@@ -111,9 +111,9 @@ data:
       -->
 
       <!-- User Information -->
-      <user value=""/> <!-- Enter your user name here -->
-      <team value=""/>         <!-- Your team number -->
-      <passkey value=""/>       <!-- 32 hexadecimal characters if provided -->
+      <user value="Toberwin"/> <!-- Enter your user name here -->
+      <team value="223518"/>         <!-- Your team number -->
+      <passkey value="b3d15f2c82dbf8f3b3d15f2c82dbf8f3"/>       <!-- 32 hexadecimal characters if provided -->
 
       <power value="full"/>     <!-- Throttling this at K8s level -->
       <gpu value="false"/>      <!-- If true, attempt to autoconfigure GPUs -->
