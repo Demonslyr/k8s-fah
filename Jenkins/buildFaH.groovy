@@ -23,7 +23,7 @@ node {
         }
     }
     stage('deploy'){        
-        //def deployout = sh(returnStdout: true, script: '''kubectl apply -f ./folding-cpu.yaml -n k8s-fah''')
+        def deployout = sh(returnStdout: true, script: '''kubectl apply -f ./folding-cpu.yaml -n k8s-fah''')
         def deployout = sh(returnStdout: true, script: '''kubectl patch deployment fah-cpu -n k8s-fah -p "{\\"spec\\":{\\"template\\":{\\"metadata\\":{\\"labels\\":{\\"date\\":\\"`date +'%s'`\\"}}}}}"''')
         println deployout        
     }                
