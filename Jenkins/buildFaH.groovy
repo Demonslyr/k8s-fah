@@ -3,9 +3,9 @@ node {
         checkout scm
         currentBuild.description = "${Branch}"
         appName = "k8s-fah-richstokes"
-        dockerRepo = "atriarchsystems"
+        dockerRepo = "	nexus.atriarch.systems/repository/atriarch-docker"
         deploymentEnvironment = "Development"
-        dockerCredId = "AtriarchDockerID"
+        dockerCredId = "AtriarchNexusBuildSvcDockerCredentials"
         dockerfilePathFromRoot = "./Dockerfile"// this is the path from the base directory
     }
     stage('build'){
@@ -16,7 +16,7 @@ node {
         def tagout = sh(returnStdout: true, script: "docker tag ${appName} ${dockerRepo}/${appName}:latest")
         println tagout
         withCredentials([usernamePassword(usernameVariable: "DOCKER_USER",passwordVariable: "DOCKER_PASS", credentialsId: dockerCredId)]){
-            def loginout = sh(returnStdout: true, script: "echo ${DOCKER_PASS} | docker login --username ${DOCKER_USER} --password-stdin")
+            def loginout = sh(returnStdout: true, script: "echo ${DOCKER_PASS} | docker login ${dockerRepo} --username ${DOCKER_USER} --password-stdin")
             println loginout
             def pushout = sh(returnStdout: true, script: "docker push ${dockerRepo}/${appName}:latest")
             println pushout
